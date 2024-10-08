@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultorio Odontológico Dra. Melina Corona</title>
+    <title>Consultorio Odontológico Dra. [Nombre]</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,10 +12,18 @@
             padding: 0;
         }
         header {
-            background-color: #4CAF50;
+            background-color: #B695C0;
             color: white;
             text-align: center;
             padding: 1rem;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-image: url('lila.jpg'); /* Coloca aquí la URL de tu imagen */
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
         nav {
             background-color: #333;
@@ -39,9 +47,25 @@
             margin: auto;
             overflow: hidden;
             padding: 20px;
+            background-image: url('ternurin.jpg'); /* Coloca aquí la URL de tu imagen */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: hsla(0, 100%, 96%, 0.671); /* Ajusta la transparencia con este valor */
+            z-index: 1;
         }
         .section {
             margin-bottom: 20px;
+            position: relative;
+            z-index: 2; /* Para asegurarte de que el contenido esté por encima del fondo */
         }
     </style>
 </head>
@@ -54,9 +78,9 @@
     <nav>
         <ul>
             <li><a href="#Sobre mi">Sobre mi </a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#costos">Costos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#Servicios">Servicios</a></li>
+            <li><a href="#Costos">Costos</a></li>
+            <li><a href="#Contacto">Contacto</a></li>
         </ul>
     </nav>
 
@@ -64,41 +88,50 @@
 
         <section id="Conozca a la Dra" class="section">
             <h2>Conozca a la Dra. Melina Corona</h2>
-            <PAG></PAG>
-            <PAG></PAG>
-            <PAG></PAG>
-        </sección>
+            <p>Hola, soy estudiante de odontología del IPN del CICS UST. Una dentista no solo se preocupa 
+                por tu salud bucal, sino también por brindarte una experiencia amable y 
+                reconfortante en cada visita. Garantizo que cada tratamiento 
+                se realice con la más alta calidad y un toque personal que hará que te 
+                sientas en confianza.</p>
+            
+        </section>
 
-        <sección identificación="servicios" clase="sección">
+        <section id="Servicios" class="section">
             <h2>Nuestros Servicios</h2>
             <ul>
                 <li>Limpieza dental</li>
-                <li>Blanqueamiento</li>
-                <li>Ortodoncia</li>
-                <li>Implantes dentales</li>
+                <li>Extracciones dentales, molares. En adultos y niños</li>
+                <li>Eliminación de caries</li>
+                <li>Incrustaciones</li>
+                <li>Aplicación de fluor, en niños</li>
+                <li>Dentadura completa</li>
             </ul>
-        </sección>
+        </section>
 
-        <sección identificación="costos" clase="sección">
+        <section id="Costos" class="section">
             <h2>Costos</h2>
-            <PAG>Ofrecemos precios competitivos para todos nuestros servicios. Algunos ejemplos:</PAG>
+            <p>Ofrecemos precios competitivos para todos nuestros servicios. Algunos ejemplos:</p>
             <ul>
-                <li>Consulta inicial: $X</li>
-                <li>Limpieza dental: $X</li>
-                <li>Blanqueamiento: $X</li>
+                <li>Consulta inicial: $250</li>
+                <li>Limpieza dental: $300</li>
+                <li>Extraciones dentales: $400 - $2000</li>
+                <li>Eliminación de caries: $350 - $500</li>
+                <li>Aplicación de fluor: $200</li>
+                <li>Dentadura completa: $5000 - $7000</li>
             </ul>
-            <PAG>Para un presupuesto detallado, por favor contáctenos.</PAG>
-        </sección>
+            <p>Para un presupuesto detallado, por favor contáctenos, los precios 
+                estan sujetos dependeindo a la complejidad del tratamiento</p>
+        </section>
 
-        <sección identificación="contacto" clase="sección">
+        <section id="Contacto" class="section">
             <h2>Contacto</h2>
             <ul>
-            <li>Teléfono: <a href="https://wa.me/5577400588" objetivo="_blanco">Enviar mensaje por WhatsApp</a></li>
-            <li>Correo electrónico: <a href="mailto:dentalmc04@gmail.com?subject=Consulta&body=Hola%2C%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios." objetivo="_blanco">Enviar correo a dentalmc04@gmail.com</a></li>
-            <li>Facebook: <a href="https://www.facebook.com/MelinaCorona2612" objetivo="_blanco" clase="enlace social">Melina Corona</a></li>
-            <li>Instagram: <a href="https://www.instagram.com/xorona__/" objetivo="_blanco" clase="enlace social">@xorona__</a></li>                 
+            <li>Teléfono: <a href="https://wa.me/5577400588" target="_blank">Enviar mensaje por WhatsApp</a></li>
+            <li>Email: <a href="mailto:dentalmc04@gmail.com?subject=Consulta&body=Hola%2C%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios." target="_blank">Enviar correo a dentalmc04@gmail.com</a></li>
+            <li>Facebook: <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" class="social-link">Melina Corona</a></li>
+            <li>Instagram: <a href="https://www.instagram.com/xorona__/" target="_blank" class="social-link">@xorona__</a></li>                 
             </ul>
-        </sección>
+        </section>
     </div>
-</cuerpo>
-</HTML>
+</body>
+</html>
