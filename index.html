@@ -4,52 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultorio Odontológico Dra. Melina Corona</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            background-color: #f9f3f9;
         }
         header {
             background-color: #B695C0;
-            color: rgb(0, 0, 0);
+            color: #ffffff;
             text-align: center;
-            padding: 1rem;
-            width: 100%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background-image: url('lila.jpg'); /* Coloca aquí la URL de tu imagen */
+            padding: 2rem;
+            background-image: url('lila.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(182, 149, 192, 0.7);
+            z-index: 1;
+        }
+        header h1, header h2 {
+            position: relative;
+            z-index: 2;
+            font-family: 'Dancing Script', cursive;
+            margin: 0;
+        }
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        header h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
         }
         nav {
             background-color: #333;
-            color: rgb(0, 0, 0);
-            padding: 0.5rem;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         nav ul {
             list-style-type: none;
-            padding: 200;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
         }
         nav ul li {
-            display: inline;
-            margin-right: 50px;
+            margin: 0 15px;
         }
         nav ul li a {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        nav ul li a:hover {
+            color: #FFD700; /* Cambiado a un color más contrastante */
+            text-decoration: underline;
         }
         .container {
-            width: 100%;
+            max-width: 1200px;
             margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background-image: url('ternurin.jpg'); /* Coloca aquí la URL de tu imagen */
+            padding: 2rem;
+            background-image: url('ternurin.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             position: relative;
         }
         .container::before {
@@ -59,25 +95,66 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: hsla(0, 100%, 96%, 0.671); /* Ajusta la transparencia con este valor */
+            background-color: rgba(255, 255, 255, 0.493);/* Reducida la opacidad aquí */
             z-index: 1;
         }
         .section {
-            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.685);/* Ajustado para mayor contraste */
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
-            z-index: 2; /* Para asegurarte de que el contenido esté por encima del fondo */
+            z-index: 2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .section h2 {
+            color: #B695C0;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        .section p, .section ul {
+            font-size: 1.1rem;
+        }
+        .section ul {
+            padding-left: 1.5rem;
+        }
+        .social-link {
+            color: #6a0dad8a; /* Cambiado a un púrpura más oscuro para mayor contraste */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .social-link:hover {
+            color: #FFFFFF;
+            background-color: #6A0DAD;
+            text-decoration: underline;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out;
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="fade-in">
         <h1>Consultorio Odontológico</h1>
-        <h2>Mildre Melina Corona Reséndiz </h2>
+        <h2>Mildre Melina Corona Reséndiz</h2>
     </header>
     
     <nav>
         <ul>
-            <li><a href="#Sobre mi">Sobre mi </a></li>
+            <li><a href="#Conozca-a-la-Dra">Sobre mí</a></li>
             <li><a href="#Servicios">Servicios</a></li>
             <li><a href="#Costos">Costos</a></li>
             <li><a href="#Contacto">Contacto</a></li>
@@ -85,51 +162,49 @@
     </nav>
 
     <div class="container">
-
-        <section id="Conozca a la Dra" class="section">
+        <section id="Conozca-a-la-Dra" class="section fade-in">
             <h2>Conozca a la Dra. Melina Corona</h2>
             <p>Hola, soy estudiante de odontología del IPN del CICS UST.</p> 
             <p>Una dentista no solo se preocupa por tu salud bucal, sino también 
                 por brindarte una experiencia amable y reconfortante en cada visita.</p> 
             <p>Garantizo que cada tratamiento se realice con la más alta calidad y 
                 un toque personal que hará que te sientas en confianza.</p>
-            
         </section>
 
-        <section id="Servicios" class="section">
+        <section id="Servicios" class="section fade-in">
             <h2>Nuestros Servicios</h2>
             <ul>
                 <li>Limpieza dental</li>
                 <li>Extracciones dentales, molares. En adultos y niños</li>
                 <li>Eliminación de caries</li>
                 <li>Incrustaciones</li>
-                <li>Aplicación de fluor, en niños</li>
+                <li>Aplicación de flúor, en niños</li>
                 <li>Dentadura completa</li>
             </ul>
         </section>
 
-        <section id="Costos" class="section">
+        <section id="Costos" class="section fade-in">
             <h2>Costos</h2>
             <p>Ofrecemos precios competitivos para todos nuestros servicios. Algunos ejemplos:</p>
             <ul>
                 <li>Consulta inicial: $250</li>
                 <li>Limpieza dental: $300</li>
-                <li>Extraciones dentales: $400 - $2000</li>
+                <li>Extracciones dentales: $400 - $2000</li>
                 <li>Eliminación de caries: $350 - $500</li>
-                <li>Aplicación de fluor: $200</li>
+                <li>Aplicación de flúor: $200</li>
                 <li>Dentadura completa: $5000 - $7000</li>
             </ul>
-            <p>Para un presupuesto detallado, por favor contáctenos, los precios 
-                estan sujetos dependeindo a la complejidad del tratamiento</p>
+            <p>Para un presupuesto detallado, por favor contáctenos. Los precios 
+                están sujetos a cambios dependiendo de la complejidad del tratamiento.</p>
         </section>
 
-        <section id="Contacto" class="section">
+        <section id="Contacto" class="section fade-in">
             <h2>Contacto</h2>
             <ul>
-            <li>Teléfono: <a href="https://wa.me/5577400588" target="_blank">Enviar mensaje por WhatsApp</a></li>
-            <li>Email: <a href="mailto:dentalmc04@gmail.com?subject=Consulta&body=Hola%2C%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios." target="_blank">Enviar correo a dentalmc04@gmail.com</a></li>
-            <li>Facebook: <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" class="social-link">Melina Corona</a></li>
-            <li>Instagram: <a href="https://www.instagram.com/xorona__/" target="_blank" class="social-link">@xorona__</a></li>                 
+                <li>Teléfono: <a href="https://wa.me/5577400588" target="_blank" class="social-link">Enviar mensaje por WhatsApp</a></li>
+                <li>Email: <a href="mailto:dentalmc04@gmail.com?subject=Consulta&body=Hola%2C%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios." target="_blank" class="social-link">dentalmc04@gmail.com</a></li>
+                <li>Facebook: <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" class="social-link">Melina Corona</a></li>
+                <li>Instagram: <a href="https://www.instagram.com/xorona__/" target="_blank" class="social-link">@xorona__</a></li>                 
             </ul>
         </section>
     </div>
