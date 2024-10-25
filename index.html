@@ -5,17 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultorio Odontológico Dra. Melina Corona</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #B695C0;
+            --secondary-color: #6a0dad8a;
+            --background-color: #f9f3f9;
+            --text-color: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f3f9;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
+
+        /* Header Styles */
         header {
-            background-color: #B695C0;
-            color: #ffffff;
+            background-color: var(--primary-color);
+            color: var(--white);
             text-align: center;
             padding: 2rem;
             background-image: url('lila.jpg');
@@ -23,7 +40,9 @@
             background-position: center;
             position: relative;
             overflow: hidden;
+            animation: fadeIn 1.5s ease-out;
         }
+
         header::before {
             content: "";
             position: absolute;
@@ -34,21 +53,26 @@
             background-color: rgba(182, 149, 192, 0.7);
             z-index: 1;
         }
+
         header h1, header h2 {
             position: relative;
             z-index: 2;
             font-family: 'Dancing Script', cursive;
             margin: 0;
         }
+
         header h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
         header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 400;
         }
+
+        /* Navigation Styles - Updated */
         nav {
             background-color: #333;
             padding: 1rem;
@@ -56,6 +80,7 @@
             top: 0;
             z-index: 1000;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -63,9 +88,11 @@
             display: flex;
             justify-content: center;
         }
+
         nav ul li {
             margin: 0 15px;
         }
+
         nav ul li a {
             color: #ffffff;
             text-decoration: none;
@@ -74,13 +101,16 @@
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
+
         nav ul li a:hover {
-            color: #FFD700; /* Cambiado a un color más contrastante */
+            color: #FFD700;
             text-decoration: underline;
         }
+
+        /* Main Content Styles */
         .container {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 2rem;
             background-image: url('ternurin.jpg');
             background-size: cover;
@@ -88,6 +118,7 @@
             background-attachment: fixed;
             position: relative;
         }
+
         .container::before {
             content: "";
             position: absolute;
@@ -95,59 +126,152 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(255, 255, 255, 0.493);/* Reducida la opacidad aquí */
+            background-color: rgba(255, 255, 255, 0.493);
             z-index: 1;
         }
+
         .section {
-            background-color: rgba(255, 255, 255, 0.685);/* Ajustado para mayor contraste */
+            background-color: rgba(255, 255, 255, 0.685);
             margin-bottom: 2rem;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             position: relative;
             z-index: 2;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
+            animation: slideIn 0.5s ease-out;
         }
+
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
+
         .section h2 {
-            color: #B695C0;
+            color: var(--primary-color);
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-family: 'Dancing Script', cursive;
         }
-        .section p, .section ul {
-            font-size: 1.1rem;
-        }
+
         .section ul {
+            list-style-type: none;
             padding-left: 1.5rem;
         }
+
+        .section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .section li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .service-item {
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .service-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Contact Section Styles - Updated */
+        #Contacto ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
         .social-link {
-            color: #6a0dad8a; /* Cambiado a un púrpura más oscuro para mayor contraste */
+            color: #6a0dad8a;
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: bold;
             padding: 2px 5px;
             border-radius: 3px;
         }
+
         .social-link:hover {
             color: #FFFFFF;
             background-color: #6a0dada1;
             text-decoration: underline;
         }
+
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .fade-in {
-            animation: fadeIn 1s ease-out;
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries - Updated */
+        @media only screen and (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            nav ul li {
+                margin: 0 5px;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+                padding: 5px 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="fade-in">
+    <header>
         <h1>Consultorio Odontológico</h1>
         <h2>Mildre Melina Corona Reséndiz</h2>
     </header>
@@ -162,30 +286,46 @@
     </nav>
 
     <div class="container">
-        <section id="Conozca-a-la-Dra" class="section fade-in">
+        <section id="Conozca-a-la-Dra" class="section">
             <h2>Conozca a la Dra. Melina Corona</h2>
             <p>Hola, soy estudiante de odontología del IPN del CICS UST.</p> 
-            <p>Una dentista no solo se preocupa por tu salud bucal, sino también 
-                por brindarte una experiencia amable y reconfortante en cada visita.</p> 
-            <p>Garantizo que cada tratamiento se realice con la más alta calidad y 
-                un toque personal que hará que te sientas en confianza.</p>
+            <p>Una dentista no solo se preocupa por tu salud bucal, sino también por brindarte una experiencia amable y reconfortante en cada visita.</p> 
+            <p>Garantizo que cada tratamiento se realice con la más alta calidad y un toque personal que hará que te sientas en confianza.</p>
         </section>
 
-        <section id="Servicios" class="section fade-in">
+        <section id="Servicios" class="section">
             <h2>Nuestros Servicios</h2>
-            <ul>
-                <li>Limpieza dental</li>
-                <li>Extracciones dentales, molares. En adultos y niños</li>
-                <li>Eliminación de caries</li>
-                <li>Incrustaciones</li>
-                <li>Aplicación de flúor, en niños</li>
-                <li>Dentadura completa</li>
-            </ul>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3><i class="fas fa-teeth"></i> Limpieza dental</h3>
+                    <p>Mantenimiento e higiene dental profesional</p>
+                </div>
+                <div class="service-item">
+                    <h3><i class="fas fa-tooth"></i> Extracciones dentales</h3>
+                    <p>En adultos y niños</p>
+                </div>
+                <div class="service-item">
+                    <h3><i class="fas fa-fill-drip"></i> Eliminación de caries</h3>
+                    <p>Tratamiento y prevención</p>
+                </div>
+                <div class="service-item">
+                    <h3><i class="fas fa-gem"></i> Incrustaciones</h3>
+                    <p>Restauraciones personalizadas</p>
+                </div>
+                <div class="service-item">
+                    <h3><i class="fas fa-child"></i> Aplicación de flúor</h3>
+                    <p>Especial para niños</p>
+                </div>
+                <div class="service-item">
+                    <h3><i class="fas fa-teeth-open"></i> Dentadura completa</h3>
+                    <p>Soluciones protésicas</p>
+                </div>
+            </div>
         </section>
 
-        <section id="Costos" class="section fade-in">
+        <section id="Costos" class="section">
             <h2>Costos</h2>
-            <p>Ofrecemos precios competitivos para todos nuestros servicios. Algunos ejemplos:</p>
+            <p>Ofrecemos precios competitivos para todos nuestros servicios:</p>
             <ul>
                 <li>Consulta inicial: $250</li>
                 <li>Limpieza dental: $300</li>
@@ -194,17 +334,32 @@
                 <li>Aplicación de flúor: $200</li>
                 <li>Dentadura completa: $5000 - $7000</li>
             </ul>
-            <p>Para un presupuesto detallado, por favor contáctenos. Los precios 
-                están sujetos a cambios dependiendo de la complejidad del tratamiento.</p>
+            <p>Para un presupuesto detallado, por favor contáctenos. Los precios están sujetos a cambios dependiendo de la complejidad del tratamiento.</p>
         </section>
 
-        <section id="Contacto" class="section fade-in">
+        <section id="Contacto" class="section">
             <h2>Contacto</h2>
             <ul>
-                <li>Teléfono: <a href="https://wa.me/5577400588" target="_blank" class="social-link">Enviar mensaje por WhatsApp</a></li>
-                <li>Email: <a href="mailto:dentalmc04@gmail.com?subject=Consulta&body=Hola%2C%20me%20gustaría%20saber%20más%20sobre%20sus%20servicios." target="_blank" class="social-link">dentalmc04@gmail.com</a></li>
-                <li>Facebook: <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" class="social-link">Melina Corona</a></li>
-                <li>Instagram: <a href="https://www.instagram.com/xorona__/" target="_blank" class="social-link">@xorona__</a></li>                 
+                <li>
+                    <a href="https://wa.me/5577400588" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i> Enviar mensaje por WhatsApp
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:dentalmc04@gmail.com" target="_blank" class="social-link">
+                        <i class="far fa-envelope"></i> dentalmc04@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" class="social-link">
+                        <i class="fab fa-facebook"></i> Melina Corona
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/xorona__/" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> @xorona__
+                    </a>
+                </li>
             </ul>
         </section>
     </div>
