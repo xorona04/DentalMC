@@ -14,6 +14,21 @@
             --text-color: #333;
             --white: #ffffff;
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --section-bg: rgba(255, 255, 255, 0.85);
+            --service-item-bg: rgba(255, 255, 255, 0.9);
+            --nav-bg: #333;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #9A7BA7;
+            --secondary-color: #8E44AD;
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --white: #1a1a1a;
+            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+            --section-bg: rgba(40, 40, 40, 0.95);
+            --service-item-bg: rgba(60, 60, 60, 0.95);
+            --nav-bg: #000000;
         }
 
         * {
@@ -27,6 +42,7 @@
             line-height: 1.6;
             background-color: var(--background-color);
             color: var(--text-color);
+            transition: all 0.3s ease;
         }
 
         /* Header Styles */
@@ -40,7 +56,6 @@
             background-position: center;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1.5s ease-out;
         }
 
         header::before {
@@ -61,20 +76,37 @@
             margin: 0;
         }
 
-        header h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: all 1.1s ease;
         }
 
-        header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 400;
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
 
-        /* Navigation Styles - Updated */
+        .theme-toggle i {
+            color: var(--white);
+            font-size: 2.3rem;
+        }
+
+        /* Navigation Styles */
         nav {
-            background-color: #333;
+            background-color: var(--nav-bg);
             padding: 1rem;
             position: sticky;
             top: 0;
@@ -87,6 +119,7 @@
             margin: 0;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         nav ul li {
@@ -99,52 +132,29 @@
             font-size: 1.1rem;
             transition: color 0.3s ease;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         nav ul li a:hover {
-            color: #FFD700;
-            text-decoration: underline;
+            color: var(--primary-color);
         }
 
-        /* Main Content Styles */
+        /* Container Styles */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            background-image: url('ternurin.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             position: relative;
         }
 
-        .container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.493);
-            z-index: 1;
-        }
-
+        /* Section Styles */
         .section {
-            background-color: rgba(255, 255, 255, 0.685);
+            background-color: var(--section-bg);
             margin-bottom: 2rem;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: var(--shadow);
             position: relative;
             z-index: 2;
-            transition: transform 0.3s ease;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .section h2 {
@@ -152,25 +162,6 @@
             font-size: 2rem;
             margin-bottom: 1.5rem;
             font-family: 'Dancing Script', cursive;
-        }
-
-        .section ul {
-            list-style-type: none;
-            padding-left: 1.5rem;
-        }
-
-        .section li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .section li::before {
-            content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
         }
 
         /* Services Grid */
@@ -182,10 +173,11 @@
         }
 
         .service-item {
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: var(--service-item-bg);
             transition: transform 0.3s ease;
+            box-shadow: var(--shadow);
         }
 
         .service-item:hover {
@@ -200,77 +192,95 @@
             gap: 0.5rem;
         }
 
-        /* Contact Section Styles - Updated */
-        #Contacto ul {
-            list-style-type: none;
-            padding-left: 1.5rem;
+        /* Contact Styles */
+        .social-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-links li {
+            margin-bottom: 1rem;
         }
 
         .social-link {
-            color: #6a0dad8a;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-color);
             text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
             transition: all 0.3s ease;
-            font-weight: bold;
-            padding: 2px 5px;
-            border-radius: 3px;
+            background-color: var(--service-item-bg);
         }
 
         .social-link:hover {
-            color: #FFFFFF;
-            background-color: #6a0dada1;
-            text-decoration: underline;
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateX(5px);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .social-link i {
+            font-size: 1.2rem;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Media Queries - Updated */
-        @media only screen and (max-width: 768px) {
+        @media (max-width: 768px) {
             .container {
                 padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
             }
 
             .section {
                 padding: 1.5rem;
             }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            nav ul li {
-                margin: 0 5px;
-            }
-
-            nav ul li a {
-                font-size: 0.9rem;
-                padding: 5px 10px;
-            }
+        }
+        .costos-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .costos-table thead {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .costos-table th, .costos-table td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid var(--primary-color);
+        }
+        
+        .costos-table tbody tr:nth-child(even) {
+            background-color: var(--service-item-bg);
+        }
+        
+        .costos-table tbody tr:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .costos-table th {
+            font-weight: bold;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <header>
         <h1>Consultorio Odontológico</h1>
         <h2>Mildre Melina Corona Reséndiz</h2>
@@ -326,42 +336,96 @@
         <section id="Costos" class="section">
             <h2>Costos</h2>
             <p>Ofrecemos precios competitivos para todos nuestros servicios:</p>
-            <ul>
-                <li>Consulta inicial: $250</li>
-                <li>Limpieza dental: $300</li>
-                <li>Extracciones dentales: $400 - $2000</li>
-                <li>Eliminación de caries: $350 - $500</li>
-                <li>Aplicación de flúor: $200</li>
-                <li>Dentadura completa: $5000 - $7000</li>
-            </ul>
-            <p>Para un presupuesto detallado, por favor contáctenos. Los precios están sujetos a cambios dependiendo de la complejidad del tratamiento.</p>
+            <table class="costos-table">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Consulta inicial</td>
+                        <td>$250</td>
+                    </tr>
+                    <tr>
+                        <td>Limpieza dental</td>
+                        <td>$300</td>
+                    </tr>
+                    <tr>
+                        <td>Extracciones dentales</td>
+                        <td>$400 - $2000</td>
+                    </tr>
+                    <tr>
+                        <td>Eliminación de caries</td>
+                        <td>$350 - $500</td>
+                    </tr>
+                    <tr>
+                        <td>Aplicación de flúor</td>
+                        <td>$200</td>
+                    </tr>
+                    <tr>
+                        <td>Dentadura completa</td>
+                        <td>$5000 - $7000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <b>Para un presupuesto detallado, por favor contáctenos. Los precios están sujetos a cambios dependiendo de la complejidad del tratamiento.</b>
         </section>
 
         <section id="Contacto" class="section">
             <h2>Contacto</h2>
-            <ul>
+            <ul class="social-links">
                 <li>
-                    <a href="https://wa.me/5577400588" target="_blank" class="social-link">
+                    <a href="https://wa.me/+525577400588" target="_blank" rel="noopener noreferrer" class="social-link">
                         <i class="fab fa-whatsapp"></i> Enviar mensaje por WhatsApp
                     </a>
                 </li>
                 <li>
-                    <a href="mailto:dentalmc04@gmail.com" target="_blank" class="social-link">
+                    <a href="mailto:dentalmc04@gmail.com" class="social-link">
                         <i class="far fa-envelope"></i> dentalmc04@gmail.com
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" class="social-link">
+                    <a href="https://www.facebook.com/MelinaCorona2612" target="_blank" rel="noopener noreferrer" class="social-link">
                         <i class="fab fa-facebook"></i> Melina Corona
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/xorona__/" target="_blank" class="social-link">
+                    <a href="https://www.instagram.com/xorona__/" target="_blank" rel="noopener noreferrer" class="social-link">
                         <i class="fab fa-instagram"></i> @xorona__
                     </a>
                 </li>
             </ul>
         </section>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.documentElement;
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeToggle.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Verificar la preferencia guardada al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.className = 'fas fa-sun';
+            }
+        });
+    </script>
 </body>
 </html>
